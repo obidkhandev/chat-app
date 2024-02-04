@@ -3,6 +3,7 @@ import 'package:chat_app/data/auth/auth_service.dart';
 import 'package:chat_app/data/auth/chat/chat_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -102,32 +103,42 @@ class _ChatPageState extends State<ChatPage> {
       child: Row(
         children: [
           Expanded(
-              child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(0, 0, 0, 0.25),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: TextField(
-              style: const TextStyle(color: Colors.white),
-              controller: _messageController,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                hintText: "Write",
-                hintStyle: TextStyle(
-                  color: Colors.grey,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              decoration: BoxDecoration(
+                color: const Color.fromRGBO(0, 0, 0, 0.25),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: TextField(
+                style: const TextStyle(color: Colors.white),
+                controller: _messageController,
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "Write",
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                  ),
                 ),
               ),
             ),
-          )),
-          // Send Button
-          IconButton(
-            onPressed: sendMessage,
-            icon: const Icon(
-              Icons.arrow_upward,
-              size: 40,
-            ),
           ),
+          // Send Button
+          Column(
+            children: [
+              GestureDetector(
+                onTap: sendMessage,
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Icon(CupertinoIcons.chat_bubble),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );
