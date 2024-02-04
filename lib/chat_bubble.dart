@@ -18,8 +18,8 @@ class ChatBubble extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: currentUser
-            ? Color.fromRGBO(39, 42, 53, 1)
-            : Color.fromRGBO(55, 62, 78, 1),
+            ? const Color.fromRGBO(39, 42, 53, 1)
+            : const Color.fromRGBO(55, 62, 78, 1),
       ),
       child: Text(
         message,

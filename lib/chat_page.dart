@@ -36,7 +36,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 9, 39, 84),
+      backgroundColor: const Color.fromARGB(255, 9, 39, 84),
       body: Column(
         children: [
           Expanded(
@@ -123,21 +123,25 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ),
           // Send Button
-          Column(
-            children: [
-              GestureDetector(
-                onTap: sendMessage,
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Icon(CupertinoIcons.chat_bubble),
-                ),
+          const SizedBox(width: 10),
+          GestureDetector(
+            onTap: sendMessage,
+            child: Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                color: _messageController.text.isNotEmpty
+                    ? const Color.fromRGBO(131, 125, 255, 1)
+                    : const Color.fromRGBO(55, 62, 78, 1),
+                borderRadius: BorderRadius.circular(10),
               ),
-            ],
+              child: Icon(
+                CupertinoIcons.chat_bubble_fill,
+                color: _messageController.text.isNotEmpty
+                    ? Colors.white
+                    : Color.fromRGBO(196, 196, 196, 1),
+              ),
+            ),
           )
         ],
       ),
